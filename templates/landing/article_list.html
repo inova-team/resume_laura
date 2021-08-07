@@ -1,0 +1,87 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block extrastyles %}
+    <style>
+        .card-image img {
+            width: 100%;
+            height: auto;
+        }
+
+        @supports (object-fit: cover) {
+            .card-image img {
+                height: 25%;
+                min-height: 10rem;
+                object-fit: cover;
+                object-position: center center;
+            }
+        }
+
+    </style>
+{% endblock %}
+
+{% block extrahead %}
+{% endblock %}
+
+{% block body %}
+
+    <!--     *********     BLOGS 3      *********      -->
+    <div class="blogs-3">
+        <div class="container">
+            <br>
+            <br>
+            <div class="content-center">
+                <div class="row align-content-center">
+                    <div class="col-md-12 ml-auto mr-auto text-center">
+                        <h2 class="title">Publicaciones</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10 ml-auto mr-auto">
+                    {% for article in article_list %}
+                        <div class="card card-plain card-blog">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="card-image d-flex align-items-stretch">
+                                        {% if article.banner %}
+                                            <img class="img img-raised rounded" src="{{ article.banner.url }}"
+                                                 alt="{{ article.name }}">
+                                        {% else %}
+                                            <span class="text-muted">No banner</span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="row">
+                                        <h3 class="card-title">
+                                            <a href="{% url 'article_detail' article.pk %}">{{ article.name|truncatechars:"40" }}</a>
+                                        </h3>
+                                        <p class="card-description">
+                                            {{ article.description|truncatechars:"180" }}
+                                            <a href="{% url 'article_detail' article.pk %}"> Read More </a>
+                                        </p>
+                                    </div>
+                                    <div class="row">
+                                        <div class="social-links">
+                                            <a href="#" class="btn btn-primary"><i class="far fa-file-pdf"></i> PDF</a>
+                                            <a href="#" class="btn btn-secondary"><i class="far fa-file-alt"></i> BibText</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extrajs %}
+    <script>
+        $(document).ready(function () {
+            $("time.timeago").timeago();
+        });
+    </script>
+{% endblock %}

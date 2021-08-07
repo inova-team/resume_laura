@@ -1,0 +1,35 @@
+<div class="blogs-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 ml-auto mr-auto">
+                <h2 class="title"><a href="{% url 'article_list'  %}">Artículos</a></h2>
+                <br/>
+                {% for article in article_list %}
+                    <div class="card card-plain card-blog">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card-image">
+                                    <img class="img img-raised rounded" src="{{ article.banner.url }}"/>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <h3 class="card-title">
+                                    <a href="{% url 'article_detail' article.pk %}">{{ article.name }}</a>
+                                </h3>
+                                <p class="card-description">
+                                    {{ article.description|truncatechars:"100" }}
+                                    <a href="{% url 'article_detail' article.pk %}"> Read More </a>
+                                </p>
+                                <div class="author">
+                                    <span class="b--black-40">por <a href="#pablo">{{ article.author }}</a>, <time
+                                            class="timeago"
+                                            datetime="{{ article.publication_date|date:'c' }}"></time> </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

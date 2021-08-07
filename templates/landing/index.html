@@ -1,0 +1,124 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block extrastyles %}
+
+    <style>
+        .card-image img {
+            width: 100%;
+            height: auto;
+        }
+
+        @supports (object-fit: cover) {
+            .card-image img {
+                height: 100%;
+                min-height: 16rem;
+                object-fit: cover;
+                object-position: center center;
+            }
+        }
+
+    </style>
+{% endblock %}
+
+{% block body %}
+    <main id="main">
+
+    <!-- ======= About Me Section ======= -->
+{#        {% include 'landing/components/about_section.html' %}#}
+    <!-- End About Me Section -->
+
+    <!-- ======= Quick Overview Section ======= -->
+        {% include 'landing/components/quick_overview.html' %}
+    <!-- End Quick Overview Section -->
+
+    <!-- ======= Short Bio Section ======= -->
+        {% include 'landing/components/short_bio_section.html' %}
+    <!-- End About Me Section -->
+
+    <!-- ======= My Resume Section ======= -->
+        {% include 'landing/components/resume_section.html' %}
+    <!-- End My Resume Section -->
+
+    <!-- ======= My Research Section ======= -->
+        {% include 'landing/components/research_section.html' %}
+    <!-- End My Research Section -->
+
+    <!-- ======= My Project Section ======= -->
+        {% include 'landing/components/project_section.html' %}
+    <!-- End My Project Section -->
+
+    <!-- ======= My Services Section ======= -->
+{#        {% include 'landing/components/services_section.html' %}#}
+    <!-- End My Services Section -->
+
+    <!-- ======= Testimonials Section ======= -->
+{#        {% include 'landing/components/testimonial_section.html' %}#}
+    <!-- End Testimonials Section -->
+
+    <!-- ======= My Portfolio Section ======= -->
+{#        {% include 'landing/components/portafolio_section.html' %}#}
+    <!-- End My Portfolio Section -->
+
+    <!-- ======= Pricing Section ======= -->
+{#        {% include 'landing/components/pricing_section.html' %}#}
+    <!-- End Pricing Section -->
+
+    <!-- ======= Contact Me Section ======= -->
+        {% include 'landing/components/contact_section.html' %}
+    <!-- End Contact Me Section -->
+
+    <!--     Article Section    -->
+{#        {% include 'landing/components/article_section.html' %}#}
+    <!--     End Indicators Section    -->
+
+    </main>
+    <!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+{#    {% include 'base/footer.html' %}#}
+    <!-- End  Footer -->
+
+{#    <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>#}
+
+
+{% endblock %}
+{% block extrajs %}
+{#    <script>#}
+{#        $(document).ready(function () {#}
+{#            $("#alert_success").hide();#}
+{#            $("#alert_danger").hide();#}
+{#            $("time.timeago").timeago();#}
+{##}
+{#            $('form').on('submit', function (e) {#}
+{#                e.preventDefault();#}
+{#                let parameters = $(this).serializeArray();#}
+{#                console.log(parameters);#}
+{#                $.ajax({#}
+{#                    url: '{% url 'contact_us' %}',#}
+{#                    type: 'POST',#}
+{#                    data: parameters,#}
+{#                    dataType: 'json'#}
+{#                }).done(function (data) {#}
+{#                    //si no hay error#}
+{#                    if (!data.hasOwnProperty('error')) {#}
+{#                        $("#alert_success").text(data['exito']);#}
+{#                        $("#alert_success").fadeTo(2000, 500).slideUp(500, function () {#}
+{#                            $("#alert_success").slideUp(500);#}
+{#                        });#}
+{#                        $('form')[0].reset();#}
+{#                        return false;#}
+{#                    }#}
+{#                }).fail(function (jqXHR, textStatus, errorThrown) {#}
+{#                    $("#alert_success").text(textStatus + ': ' + errorThrown);#}
+{#                    $("#alert_danger").fadeTo(2000, 500).slideUp(500, function () {#}
+{#                        $("#alert_danger").slideUp(500);#}
+{#                    });#}
+{#                }).always(function (data) {#}
+{##}
+{#                })#}
+{#            })#}
+{#        });#}
+{#    </script>#}
+
+{% endblock %}

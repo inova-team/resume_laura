@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>iPortfolio Bootstrap Template - Index</title>
+    <meta content="" name="descriptison">
+    <meta content="" name="keywords">
+
+    <!--     Fonts and icons     -->
+    {% include 'base/stylesheet.html' %}
+    {% block extrastyles %}{% endblock %}
+    {% block extrahead %}{% endblock %}
+</head>
+<body>
+    <!-- ======= Header ======= -->
+    {% include 'base/header.html' %}
+    <!-- End Header -->
+
+    {% if 'article_list' not in request.path and 'article_detail' not in request.path%}
+            {% include 'landing/components/hero_section.html' %}
+    {% endif %}
+
+{#    {% include 'base/navbar.html' %}#}
+    {% block body %}{% endblock %}
+    {% include 'base/footer.html' %}
+</body>
+
+{% include 'base/js.html' %}
+{% block extrajs %}{% endblock %}
+</html>

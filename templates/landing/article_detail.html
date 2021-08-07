@@ -1,0 +1,121 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block extrastyles %}
+
+    <style>
+        .card-image img {
+            width: 100%;
+            height: auto;
+        }
+
+        @supports (object-fit: cover) {
+            .card-image img {
+                height: 50%;
+                min-height: 13rem;
+                object-fit: cover;
+                object-position: center center;
+            }
+        }
+
+    </style>
+
+{% endblock %}
+
+{% block extrahead %}
+{% endblock %}
+
+{% block body %}
+
+    <body class="blog-post sidebar-collapse">
+    <div class="wrapper">
+        <div class="page-header page-header-small">
+            <div class="page-header-image" data-parallax="true"
+                 style="background-image: url({{ article.banner.url }});">
+            </div>
+            {#            Sharethis#}
+            {#            <div class="sharethis-inline-share-buttons"></div>#}
+
+            <div class="content-center">
+                <div class="row">
+                    <div class="col-md-8 ml-auto mr-auto text-center">
+                        <h2 class="title">{{ article.name }}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="button-container">
+                            <a href="{% url 'article_list' %}"
+                               class="btn btn-primary btn-round btn-lg">
+                                <i class="now-ui-icons text_align-left"></i> Artículos
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <div class="container">
+                    <div class="row ">
+                        <div class="ml-auto mr-auto">
+                            Abstract
+                            <p>{{ article.description }}</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pdfobject w-50 p-1 mx-auto" style="background-color: #40556f;">
+                <div class="form-group">
+                    <iframe src="{{ article.pdf.url }}" height="500px" width="100%">
+                    </iframe>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="container">
+                    <div class="col-md-12">
+                        <h2 class="title text-center">Últimos artículos</h2>
+                        <br/>
+                        {% for article in list_articles %}
+                            <div class="blogs-1" id="blogs-1">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="card-image">
+                                            <img class="img img-raised rounded"
+                                                 src="{{ article.banner.url }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <h3 class="card-title">
+                                            <a href={% url "article_detail" pk=article.pk %}>{{ article.name }}</a>
+                                        </h3>
+                                        <p class="card-description">
+                                            {{ article.description|truncatechars:"150" }}
+                                            <a href={% url "article_detail" pk=article.pk %}><b>Leer más</b></a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+
+{% endblock %}
+
+{% block extrajs %}
+    <script>
+        $(document).ready(function () {
+            $("time.timeago").timeago();
+        });
+    </script>
+{% endblock %}

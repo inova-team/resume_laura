@@ -44,6 +44,10 @@
         {% include 'landing/components/research_section.html' %}
     <!-- End My Research Section -->
 
+    <!-- ======= Testimonials Section ======= -->
+        {% include 'landing/components/testimonial_section.html' %}
+    <!-- End Testimonials Section -->
+
     <!-- ======= My Project Section ======= -->
         {% include 'landing/components/project_section.html' %}
     <!-- End My Project Section -->
@@ -51,10 +55,6 @@
     <!-- ======= My Services Section ======= -->
 {#        {% include 'landing/components/services_section.html' %}#}
     <!-- End My Services Section -->
-
-    <!-- ======= Testimonials Section ======= -->
-{#        {% include 'landing/components/testimonial_section.html' %}#}
-    <!-- End Testimonials Section -->
 
     <!-- ======= My Portfolio Section ======= -->
 {#        {% include 'landing/components/portafolio_section.html' %}#}
@@ -84,6 +84,14 @@
 
 {% endblock %}
 {% block extrajs %}
+    {% if link %}
+       <script>
+        window.location.hash = '#'+{{ link }};
+       </script>
+    {% endif %}
+
+
+
 {#    <script>#}
 {#        $(document).ready(function () {#}
 {#            $("#alert_success").hide();#}

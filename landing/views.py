@@ -21,6 +21,14 @@ def renderHome(request):
 
     return render(request, 'landing/index.html', context)
 
+def renderCustom(request,id):
+    context = {
+        'title_page': 'Inicio',
+        'link':id
+    }
+
+    return render(request, 'landing/index.html', context)
+
 
 def renderContactUs_email(request):
     data = {}

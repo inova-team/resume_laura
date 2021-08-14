@@ -1,27 +1,45 @@
 {% load static %}
-  <!-- ======= Header ======= -->
+<!-- ======= Header ======= -->
 
-    {% if 'article_list' not in request.path and 'article_detail' not in request.path%}
-        <header id="header" class="fixed-top d-flex justify-content-center align-items-center header-transparent">
-    {% else %}
-        <header id="header" class="fixed-top d-flex justify-content-center align-items-center">
-    {% endif %}
-
+{% if 'article_list' not in request.path and 'article_detail' not in request.path %}
+    <header id="header" class="fixed-top d-flex justify-content-center align-items-center header-transparent">
 
 
     <nav id="navbar" class="navbar">
-      <ul>
-        <li><a class="nav-link scrollto active" href="{% url 'home'  %}">Home</a></li>
-        <li><a class="nav-link scrollto" href="#about">About</a></li>
-        <li><a class="nav-link scrollto" href="#short_bio">Shor Bio</a></li>
-        <li><a class="nav-link scrollto" href="#resume">Resume</a></li>
-        <li><a class="nav-link scrollto " href="#research">Research</a></li>
-        <li><a class="nav-link scrollto " href="#project">Projects</a></li>
-        <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-        <li><a class="nav-link scrollto " href="{% url 'article_list'  %}">Publicaciones</a></li>
-      </ul>
-      <i class="bi bi-list mobile-nav-toggle"></i>
+        <ul>
+            <li><a id="home_navbar" class="nav-link scrollto" href="#hero">Home</a></li>
+            <li><a id="about_navbar" class="nav-link scrollto" href="#about">About</a></li>
+            <li><a id="short_bio_navbar" class="nav-link scrollto" href="#short_bio">Short Bio</a></li>
+            <li><a id="resume_navbar" class="nav-link scrollto" href="#resume">Resume</a></li>
+            <li><a id="research_navbar" class="nav-link scrollto " href="#research">Research</a></li>
+            <li><a id="project_navbar" class="nav-link scrollto " href="#project">Projects</a></li>
+            <li><a id="contact_navbar" class="nav-link scrollto" href="#contact">Contact</a></li>
+            <li><a class="nav-link scrollto " href="{% url 'article_list' %}">Publications</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
     </nav><!-- .navbar -->
 
-  </header>
-  <!-- End Header -->
+{% else %}
+    <header id="header" class="fixed-top d-flex justify-content-center align-items-center">
+
+
+    <nav id="navbar" class="navbar">
+        <ul>
+            <li><a id="home_navbar" class="nav-link scrollto" href="{% url 'home' %}">Home</a></li>
+            <li><a id="about_navbar" class="nav-link scrollto" href="{% url 'home' %}">About</a></li>
+            <li><a id="short_bio_navbar" class="nav-link scrollto" href="{% url 'home' %}">Short Bio</a></li>
+            <li><a id="resume_navbar" class="nav-link scrollto" href="{% url 'home' %}">Resume</a></li>
+            <li><a id="research_navbar" class="nav-link scrollto " href="{% url 'home' %}">Research</a></li>
+            <li><a id="project_navbar" class="nav-link scrollto " href="{% url 'home' %}">Projects</a></li>
+            <li><a id="contact_navbar" class="nav-link scrollto" href="{% url 'home' %}">Contact</a></li>
+            <li><a class="nav-link scrollto " href="{% url 'article_list' %}">Publications</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav><!-- .navbar -->
+{% endif %}
+
+
+
+
+</header>
+<!-- End Header -->

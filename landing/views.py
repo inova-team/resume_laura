@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator, EmptyPage
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -21,10 +22,11 @@ def renderHome(request):
 
     return render(request, 'landing/index.html', context)
 
-def renderCustom(request,id):
+
+def renderCustom(request, id):
     context = {
         'title_page': 'Inicio',
-        'link':id
+        'link': id
     }
 
     return render(request, 'landing/index.html', context)
@@ -69,9 +71,22 @@ def renderContactUs_email(request):
 
 def renderArticle(request):
     article_list = Article.objects.all().order_by('-publication_date')
+
+    articles = Paginator(article_list, 6)
+    page_num = request.GET.get('page', 1)
+    try:
+        page = articles.page(page_num)
+        print(articles.page_range)
+    except EmptyPage:
+        print("HOla")
+        page = articles.page(1)
+        redirect('article_list')
     context = {
         'title_page': 'Lista de Artículos',
-        'article_list': article_list,
+        "articles": page,
+        "page_number": page.number,
+        'paginator': articles,
+        # "media_path": MEDIA_URL
     }
     return render(request, 'landing/article_list.html', context)
 

@@ -39,7 +39,7 @@
             </div>
             <div class="row">
                 <div class="col-md-10 ml-auto mr-auto">
-                    {% for article in article_list %}
+                    {% for article in articles %}
                         <div class="card card-plain card-blog">
                             <div class="row">
                                 <div class="col-md-2">
@@ -64,14 +64,34 @@
                                     </div>
                                     <div class="row">
                                         <div class="social-links">
-                                            <a href="#" class="btn btn-primary"><i class="far fa-file-pdf"></i> PDF</a>
-                                            <a href="#" class="btn btn-secondary"><i class="far fa-file-alt"></i> BibText</a>
+                                            <a href="{{ article.pdf.url }}" target="_blank" class="btn btn-primary"><i
+                                                    class="far fa-file-pdf"></i> PDF</a>
+                                            <a href="{{ article.bibText.url }}" download
+                                               class="btn btn-secondary"><i class="far fa-file-alt"></i> BibText</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     {% endfor %}
+                </div>
+            </div>
+            <div class="card-footer border-top d-flex justify-content-center">
+                <div>
+                    <a class="btn btn-falcon-default btn-sm mr-1 mr-sm-2 {% if not articles.has_previous %} not-active {% endif %}"
+                            {% if articles.has_previous %}
+                       href="{% url 'article_list' %}?page={{ articles.previous_page_number }}" {% endif %}
+                       type="button" data-toggle="tooltip" data-placement="top" title="Prev"><span
+                            class="fas fa-chevron-left"></span></a>
+                    {% for page in paginator.page_range %}
+                        <a class="btn btn-sm btn-falcon-default {% if page_number == page %} text-primary {% endif %} mr-2"
+                           href="{% url 'article_list' %}?page={{ page }}">{{ page }}</a>
+                    {% endfor %}
+                    <a class="btn btn-falcon-default btn-sm {% if not articles.has_next %} not-active {% endif %}"
+                       type="button" {% if articles.has_next %}
+                       href="{% url 'article_list' %}?page={{ articles.next_page_number }}" {% endif %}
+                       data-toggle="tooltip" data-placement="top" title="Next"><span
+                            class="fas fa-chevron-right"></span></a>
                 </div>
             </div>
         </div>

@@ -8,6 +8,7 @@ class Article(models.Model):
     author = models.CharField(max_length=1000)
     publication_date = models.DateTimeField(editable=False, null=True)
     pdf = models.FileField(upload_to='article/pdfs/')
+    bibText = models.FileField(upload_to='article/bibtext/', null=True, blank=True)
     banner = models.ImageField(upload_to='article/banner/', null=True, blank=True)
 
     def __str__(self):

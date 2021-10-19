@@ -92,41 +92,41 @@
 
 
 
-{#    <script>#}
-{#        $(document).ready(function () {#}
-{#            $("#alert_success").hide();#}
-{#            $("#alert_danger").hide();#}
-{#            $("time.timeago").timeago();#}
-{##}
-{#            $('form').on('submit', function (e) {#}
-{#                e.preventDefault();#}
-{#                let parameters = $(this).serializeArray();#}
-{#                console.log(parameters);#}
-{#                $.ajax({#}
-{#                    url: '{% url 'contact_us' %}',#}
-{#                    type: 'POST',#}
-{#                    data: parameters,#}
-{#                    dataType: 'json'#}
-{#                }).done(function (data) {#}
-{#                    //si no hay error#}
-{#                    if (!data.hasOwnProperty('error')) {#}
-{#                        $("#alert_success").text(data['exito']);#}
-{#                        $("#alert_success").fadeTo(2000, 500).slideUp(500, function () {#}
-{#                            $("#alert_success").slideUp(500);#}
-{#                        });#}
-{#                        $('form')[0].reset();#}
-{#                        return false;#}
-{#                    }#}
-{#                }).fail(function (jqXHR, textStatus, errorThrown) {#}
-{#                    $("#alert_success").text(textStatus + ': ' + errorThrown);#}
-{#                    $("#alert_danger").fadeTo(2000, 500).slideUp(500, function () {#}
-{#                        $("#alert_danger").slideUp(500);#}
-{#                    });#}
-{#                }).always(function (data) {#}
-{##}
-{#                })#}
-{#            })#}
-{#        });#}
-{#    </script>#}
+    <script>
+        $(document).ready(function () {
+            $("#alert_success").hide();
+            $("#alert_danger").hide();
+            $("time.timeago").timeago();
+
+            $('form').on('submit', function (e) {
+                e.preventDefault();
+                let parameters = $(this).serializeArray();
+                console.log(parameters);
+                $.ajax({
+                    url: '{% url 'contact_us' %}',
+                    type: 'POST',
+                    data: parameters,
+                    dataType: 'json'
+                }).done(function (data) {
+                    //si no hay error
+                    if (!data.hasOwnProperty('error')) {
+                        $("#alert_success").text(data['exito']);
+                        $("#alert_success").fadeTo(2000, 500).slideUp(500, function () {
+                            $("#alert_success").slideUp(500);
+                        });
+                        $('form')[0].reset();
+                        return false;
+                    }
+                }).fail(function (jqXHR, textStatus, errorThrown) {
+                    $("#alert_success").text(textStatus + ': ' + errorThrown);
+                    $("#alert_danger").fadeTo(2000, 500).slideUp(500, function () {
+                        $("#alert_danger").slideUp(500);
+                    });
+                }).always(function (data) {
+
+                })
+            })
+        });
+    </script>
 
 {% endblock %}

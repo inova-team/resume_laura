@@ -39,18 +39,18 @@ def renderContactUs_email(request):
         try:
             name = request.POST['name']
             email = request.POST.get('email')
-            number = request.POST.get('number')
+            subject = request.POST.get('subject')
             message = request.POST.get('message')
 
-            subject = f'Mensaje de {name}'
-            sender = 'kurosaki.ishigo3@gmail.com'
-            recipients = ['kurosaki.ishigo3@gmail.com']  # [email]
+            # subject = f'Mensaje de {name}'
+            sender = 'info@inova.team'
+            recipients = [email]  # [email]
             # send_mail(subject, message, sender, recipients, fail_silently=True)
 
             context = {
                 'name': name,
                 'email': email,
-                'number': number,
+                # 'subject': subject,
                 'message': message,
             }
 
